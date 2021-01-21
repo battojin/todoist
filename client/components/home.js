@@ -13,7 +13,7 @@ const Home = () => {
   const categories = useSelector((store) => store.taskReducer.list)
 
   return (
-    <div>
+    <div className="home">
       {categories.map((category, index) => {
         return (
           <div key={category}>
