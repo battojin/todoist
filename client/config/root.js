@@ -4,13 +4,15 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Switch, Route } from 'react-router-dom'
 import store, { history } from '../redux'
 import Home from '../components/home'
+import Category from '../components/category'
 
-const Root = () => {
+const Root = (props) => {
   return (
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <ConnectedRouter history={history} location={props.location} context={props.context}>
         <Switch>
           <Route exact path="/" component={() => <Home />} />
+          <Route exact path="/:category" component={() => <Category />} />
         </Switch>
       </ConnectedRouter>
     </Provider>

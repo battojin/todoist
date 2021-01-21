@@ -1,8 +1,9 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 import express from 'express'
 
 require('dotenv').config()
-const { readdir } = require('fs').promises
+const { readFile, readdir } = require('fs').promises
 
 const server = express()
 const PORT = process.env.PORT || 8080
@@ -31,9 +32,37 @@ server.get('/api/v1/test', (req, res) => {
 //   status: ''
 // }
 
+const toReadFile = (category) => {
+  return readFile(`${__dirname}/tasks/${category}.json`, { encoding: 'utf8' }).then((file) => JSON.parse(file))
+}
+
+const keyRemoval = (file) => {
+  return file
+    .filter((task) => !task._isDeleted)
+    .map((object) => {
+      return Object.keys(object).reduce((acc, key) => {
+        if (key[0] !== '_') {
+          return { ...acc, [key]: object[key] }
+        }
+        return acc
+      }, {})
+    })
+}
+
 server.get('/api/v1/categories', async (req, res) => {
   const categoryNames = await readdir(`${__dirname}/tasks`).then((data) => data.map((file) => file.slice(0, -5)))
   res.json(categoryNames)
+})
+
+server.get('/api/v1/tasks/:category', async (req, res) => {
+  const { category } = req.params
+  const data = await toReadFile(category)
+    .then((file) => keyRemoval(file))
+    .catch(() => {
+      res.status(404)
+      res.end()
+    })
+  res.json(data)
 })
 
 server.listen(PORT)
