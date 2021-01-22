@@ -2,6 +2,9 @@ import axios from 'axios'
 
 const GET_CATEGORIES = 'GET_CATEGORIES'
 const GET_TASKS = 'GET_TASKS'
+const CHANGE_STATUS = 'CHANGE_STATUS'
+const CHANGE_TITLE = 'CHANGE_TITLE'
+const DELETE_TASK = 'DELETE_TASK'
 
 const initialState = {
   list: [],
@@ -20,6 +23,24 @@ export default (state = initialState, action) => {
       return {
         ...state,
         taskList: action.payload.tasks
+      }
+    }
+    case CHANGE_STATUS: {
+      return {
+        ...state,
+        taskList: action.payload.taskList
+      }
+    }
+    case CHANGE_TITLE: {
+      return {
+        ...state,
+        taskList: action.payload.taskList
+      }
+    }
+    case DELETE_TASK: {
+      return {
+        ...state,
+        taskList: action.payload.taskList
       }
     }
     default:
@@ -48,4 +69,60 @@ export const getTasks = (category) => async (dispatch) => {
       tasks: taskData.data
     }
   })
+}
+
+export const changeStatus = (category, id, status) => {
+  return (dispatch, getState) => {
+    const store = getState()
+    const { taskList } = store.taskReducer
+    const newStatus = taskList.map((task) => (task.taskId === id ? { ...task, status } : task))
+    dispatch({
+      type: CHANGE_STATUS,
+      payload: {
+        taskList: newStatus
+      }
+    })
+    axios({
+      method: 'patch',
+      url: `/api/v1/tasks/${category}/${id}`,
+      data: {
+        status
+      }
+    })
+  }
+}
+
+export const changeTitle = (category, id, title) => {
+  return (dispatch) => {
+    axios({
+      method: 'patch',
+      url: `/api/v1/tasks/${category}/${id}`,
+      data: {
+        title
+      }
+    }).then(({ data }) => {
+      dispatch({
+        type: CHANGE_TITLE,
+        payload: {
+          taskList: data
+        }
+      })
+    })
+  }
+}
+
+export const deleteTask = (category, id) => {
+  return (dispatch) => {
+    axios({
+      method: 'delete',
+      url: `/api/v1/tasks/${category}/${id}`
+    }).then(({ data }) => {
+      dispatch({
+        type: DELETE_TASK,
+        payload: {
+          taskList: data
+        }
+      })
+    })
+  }
 }

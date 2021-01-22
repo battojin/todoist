@@ -3,7 +3,7 @@
 import express from 'express'
 
 require('dotenv').config()
-const { readFile, readdir } = require('fs').promises
+const { readFile, readdir, writeFile } = require('fs').promises
 
 const server = express()
 const PORT = process.env.PORT || 8080
@@ -36,6 +36,8 @@ const toReadFile = (category) => {
   return readFile(`${__dirname}/tasks/${category}.json`, { encoding: 'utf8' }).then((file) => JSON.parse(file))
 }
 
+const toWriteFile = (taskData, category) => writeFile(`${__dirname}/tasks/${category}.json`, JSON.stringify(taskData), { encoding: 'utf8' })
+
 const keyRemoval = (file) => {
   return file
     .filter((task) => !task._isDeleted)
@@ -65,6 +67,32 @@ server.get('/api/v1/tasks/:category', async (req, res) => {
   res.json(data)
 })
 
+server.patch('/api/v1/tasks/:category/:id', async (req, res) => {
+  const { category, id } = req.params
+  const { status, title } = req.body
+  const taskData = await toReadFile(category).then((file) => {
+    return file.map((task) => {
+      return task.taskId === id
+        ? { ...task, status: status || task.status, title: title || task.title }
+        : task
+    })
+  })
+
+  toWriteFile(taskData, category)
+  res.json(taskData)
+})
+
+server.delete('/api/v1/tasks/:category/:id', async (req, res) => {
+  const { category, id } = req.params
+  const updatedList = await toReadFile(category).then((file) => {
+    return file.map((task) => {
+      return task.taskId === id ? { ...task, _isDeleted: true, _deletedAt: +new Date() } : task
+    })
+  })
+
+  toWriteFile(updatedList, category)
+  res.json(updatedList.filter((task) => !task._isDeleted))
+})
 server.listen(PORT)
 
 console.log(`Serving at http://localhost:${PORT}`)
