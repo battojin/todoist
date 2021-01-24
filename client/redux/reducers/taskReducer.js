@@ -5,6 +5,7 @@ const GET_TASKS = 'GET_TASKS'
 const CHANGE_STATUS = 'CHANGE_STATUS'
 const CHANGE_TITLE = 'CHANGE_TITLE'
 const DELETE_TASK = 'DELETE_TASK'
+const ADD_TASK = 'ADD_TASK'
 
 const initialState = {
   list: [],
@@ -38,6 +39,12 @@ export default (state = initialState, action) => {
       }
     }
     case DELETE_TASK: {
+      return {
+        ...state,
+        taskList: action.payload.taskList
+      }
+    }
+    case ADD_TASK: {
       return {
         ...state,
         taskList: action.payload.taskList
@@ -119,6 +126,25 @@ export const deleteTask = (category, id) => {
     }).then(({ data }) => {
       dispatch({
         type: DELETE_TASK,
+        payload: {
+          taskList: data
+        }
+      })
+    })
+  }
+}
+
+export const newTask = (category, title) => {
+  return (dispatch) => {
+    axios({
+      method: 'post',
+      url: `/api/v1/tasks/${category}`,
+      data: {
+        title
+      }
+    }).then(({ data }) => {
+      dispatch({
+        type: ADD_TASK,
         payload: {
           taskList: data
         }

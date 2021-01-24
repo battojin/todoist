@@ -7,6 +7,7 @@ const { readFile, readdir, writeFile } = require('fs').promises
 
 const server = express()
 const PORT = process.env.PORT || 8080
+const shortid = require('shortid')
 
 server.use('/static', express.static(`${__dirname}/public`))
 server.use(express.json({ limit: '1000kb' }))
@@ -23,14 +24,14 @@ server.get('/api/v1/test', (req, res) => {
   res.send('API: test data')
 })
 
-// const TaskModel = {
-//   taskId: '',
-//   title: '',
-//   _isDeleted: false,
-//   _createdAt: +new Date(),
-//   _deletedAt: null,
-//   status: ''
-// }
+const TaskModel = {
+  taskId: '',
+  title: '',
+  _isDeleted: false,
+  _createdAt: +new Date(),
+  _deletedAt: null,
+  status: ''
+}
 
 const toReadFile = (category) => {
   return readFile(`${__dirname}/tasks/${category}.json`, { encoding: 'utf8' }).then((file) => JSON.parse(file))
@@ -93,6 +94,24 @@ server.delete('/api/v1/tasks/:category/:id', async (req, res) => {
   toWriteFile(updatedList, category)
   res.json(updatedList.filter((task) => !task._isDeleted))
 })
+
+server.post('/api/v1/tasks/:category', async (req, res) => {
+  const { category } = req.params
+  const task = {
+    ...TaskModel,
+    taskId: shortid.generate(),
+    title: req.body.title,
+    status: 'new',
+    _createdAt: +new Date()
+  }
+  const updatedList = await toReadFile(category).then((data) => {
+    const updatedTasks = [...data, task]
+    toWriteFile(updatedTasks, category)
+    return updatedTasks
+  })
+  res.json(updatedList.filter((item) => !item._isDeleted))
+})
+
 server.listen(PORT)
 
 console.log(`Serving at http://localhost:${PORT}`)
