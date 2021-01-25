@@ -1,5 +1,3 @@
-# Personal boilerplate
- 
-yarn install
+# Task management tool
 
-yarn run dev
+Done with React + Redux + ExpressJS
