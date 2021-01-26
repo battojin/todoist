@@ -1,10 +1,31 @@
 body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
     font-size: 1.25em;
-    color: black;
-    background: pink;
-    margin: 40px
+    color: #0f3057;
+    background: #f8f1f1;
 }
 
 .home {
-    background: green
+    display: flex;
+    width: 50vh;
+    height: 30vh;
+    flex-direction: column;
+    background: #a3d2ca;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+}
+
+.category {
+    display: flex;
+    width: 50vh;
+    flex-direction: column;
+    background: #5eaaa8;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
 }

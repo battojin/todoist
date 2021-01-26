@@ -18,7 +18,7 @@ const Category = () => {
   return (
     <div>
       <div>
-        <div>
+        <div className="category">
           {tasks.map((item) => (
             <Task key={item.taskId} task={item} category={category} />
           ))}
