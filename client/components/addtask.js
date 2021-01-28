@@ -8,7 +8,7 @@ const AddTask = ({ category }) => {
   const onChange = (e) => setTitle(e.target.value)
 
   return (
-    <div>
+    <div className="addtask">
       <input type="text" value={title} onChange={onChange} />
       <button
         type="button"

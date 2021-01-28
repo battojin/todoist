@@ -9,6 +9,20 @@ body {
     background: #f8f1f1;
 }
 
+button {
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    color: #000;
+    font: 600;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: auto;
+    margin: 1px;
+}
+
 .home {
     display: flex;
     width: 50vh;
@@ -52,3 +66,8 @@ body {
 }
 
 .category-button:visited { text-decoration: none; color: #0f3057 }
+
+.addtask {
+    margin: 5px;
+    margin-top: 10px;
+}
