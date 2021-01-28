@@ -17,7 +17,7 @@ const Home = () => {
       {categories.map((category, index) => {
         return (
           <div key={category}>
-            <Link to={`/${category}`}>
+            <Link to={`/${category}`} className="category-button">
               {index + 1}. {category}
             </Link>
           </div>

@@ -6,10 +6,10 @@ import store, { history } from '../redux'
 import Home from '../components/home'
 import Category from '../components/category'
 
-const Root = (props) => {
+const Root = () => {
   return (
     <Provider store={store}>
-      <ConnectedRouter history={history} location={props.location} context={props.context}>
+      <ConnectedRouter history={history}>
         <Switch>
           <Route exact path="/" component={() => <Home />} />
           <Route exact path="/:category" component={() => <Category />} />

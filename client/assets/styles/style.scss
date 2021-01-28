@@ -18,6 +18,7 @@ body {
     padding: 12px;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
 
 .category {
@@ -28,4 +29,26 @@ body {
     padding: 12px;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
+
+.category-button {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    height: 25px;
+    width: 200px;
+    overflow: hidden;
+    background: #4dbecf;
+    border-radius: 10px;
+    border: 1px dashed;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px rgba(black,.1);
+    padding: 15px;
+    margin: 6px;
+    text-align: center;
+}
+
+.category-button:visited { text-decoration: none; color: #0f3057 }
