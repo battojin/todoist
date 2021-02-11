@@ -12,7 +12,7 @@ body {
 button {
     overflow: hidden;
     position: relative;
-    background: #fff;
+    background: #f5e8c9;
     color: #000;
     font: 600;
     text-align: center;
@@ -55,9 +55,9 @@ button {
     height: 25px;
     width: 200px;
     overflow: hidden;
-    background: #99582A;
+    background: #fad67d;
     border-radius: 10px;
-    border: 1px dashed;
+    border: 1px solid;
     cursor: pointer;
     box-shadow: 1px 5px 15px rgba(black,.1);
     padding: 15px;
@@ -73,8 +73,9 @@ button {
 }
 
 .task {
-    margin: 10px;
-    background: #BB9457;
+    margin: 7px;
+    background: #d9b868;
     border-radius: 10px;
-    border: 2px dashed;
+    border: 1px solid;
+    width: 35vh;
 }
