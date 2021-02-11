@@ -34,7 +34,7 @@ const Task = ({ task, category }) => {
   }
 
   return (
-    <div>
+    <div className="task">
       <button type="button" onClick={editClick}>
         {editMode ? 'save' : 'edit'}
       </button>

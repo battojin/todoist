@@ -6,7 +6,7 @@ body {
     margin: 0;
     font-size: 1.25em;
     color: #0f3057;
-    background: #f8f1f1;
+    background: #ffffee;
 }
 
 button {
@@ -28,7 +28,7 @@ button {
     width: 50vh;
     height: 30vh;
     flex-direction: column;
-    background: #a3d2ca;
+    background: #FFE6A7;
     padding: 12px;
     justify-content: center;
     align-items: center;
@@ -39,7 +39,7 @@ button {
     display: flex;
     width: 50vh;
     flex-direction: column;
-    background: #5eaaa8;
+    background: #FFE6A7;
     padding: 12px;
     justify-content: center;
     align-items: center;
@@ -55,7 +55,7 @@ button {
     height: 25px;
     width: 200px;
     overflow: hidden;
-    background: #4dbecf;
+    background: #99582A;
     border-radius: 10px;
     border: 1px dashed;
     cursor: pointer;
@@ -70,4 +70,11 @@ button {
 .addtask {
     margin: 5px;
     margin-top: 10px;
+}
+
+.task {
+    margin: 10px;
+    background: #BB9457;
+    border-radius: 10px;
+    border: 2px dashed;
 }

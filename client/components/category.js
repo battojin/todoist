@@ -24,7 +24,7 @@ const Category = () => {
           ))}
           <AddTask category={category} />
           <div>
-            <Link to="/">Go back</Link>
+            <Link style={{ textDecoration: 'none' }} to="/">Go back</Link>
           </div>
         </div>
       </div>
