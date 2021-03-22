@@ -34,43 +34,48 @@ const Task = ({ task, category }) => {
   }
 
   return (
-    <div className="task">
-      <button type="button" onClick={editClick}>
-        {editMode ? 'save' : 'edit'}
-      </button>
+    <div className="card mb-2">
+      <div className="card-body">
+        <button type="button" className="btn btn-info" onClick={editClick}>
+          {editMode ? 'save' : 'edit'}
+        </button>
 
-      {editMode && (
+        {editMode && (
         <input
           type="text"
           onChange={onChange}
           value={Title}
         />
-      )}
-      {!editMode && (
+        )}
+        {!editMode && (
         <>
           <div>{task.title}</div>
           <div>{task.status}</div>
         </>
-      )}
+        )}
 
-      <button
-        type="button"
-        onClick={() => dispatch(changeStatus(category, task.taskId, status))}
-      >
-        {status}
-      </button>
-      <button
-        type="button"
-        onClick={() => dispatch(changeStatus(category, task.taskId, blocked))}
-      >
-        {blocked}
-      </button>
-      <button
-        type="button"
-        onClick={() => dispatch(deleteTask(category, task.taskId))}
-      >
-        Delete
-      </button>
+        <button
+          type="button"
+          className="btn btn-warning m-1"
+          onClick={() => dispatch(changeStatus(category, task.taskId, status))}
+        >
+          {status}
+        </button>
+        <button
+          type="button"
+          className="btn btn-warning m-1"
+          onClick={() => dispatch(changeStatus(category, task.taskId, blocked))}
+        >
+          {blocked}
+        </button>
+        <button
+          type="button"
+          className="btn btn-warning m-1"
+          onClick={() => dispatch(deleteTask(category, task.taskId))}
+        >
+          Delete
+        </button>
+      </div>
     </div>
   )
 }
