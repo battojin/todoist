@@ -80,7 +80,7 @@ server.patch('/api/v1/tasks/:category/:id', async (req, res) => {
   })
 
   toWriteFile(taskData, category)
-  res.json(taskData)
+  res.json(taskData.filter((item) => !item._isDeleted))
 })
 
 server.delete('/api/v1/tasks/:category/:id', async (req, res) => {
