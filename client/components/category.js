@@ -18,13 +18,13 @@ const Category = () => {
   return (
     <div>
       <div>
-        <div className="category">
+        <div className="container">
           {tasks.map((item) => (
             <Task key={item.taskId} task={item} category={category} />
           ))}
           <AddTask category={category} />
-          <div>
-            <Link style={{ textDecoration: 'none' }} to="/">Go back</Link>
+          <div className="d-flex justify-content-center">
+            <Link className="btn btn-info mt-3" style={{ textDecoration: 'none' }} to="/">Go back</Link>
           </div>
         </div>
       </div>

@@ -15,29 +15,29 @@ const Task = ({ task, category }) => {
     }
     setEditMode(!editMode)
   }
-  const blocked = task.status === 'blocked' ? 'in progress' : 'blocked'
+  const blocked = task.status === 'Blocked' ? 'In progress' : 'Blocked'
 
   let status
   switch (task.status) {
-    case 'new':
-    case 'done': {
-      status = 'in progress'
+    case 'New':
+    case 'Done': {
+      status = 'In progress'
       break
     }
-    case 'in progress':
-    case 'blocked': {
-      status = 'done'
+    case 'In progress':
+    case 'Blocked': {
+      status = 'Done'
       break
     }
     default:
-      status = 'in progress'
+      status = 'In progress'
   }
 
   return (
-    <div className="card mb-2">
+    <div className="card">
       <div className="card-body">
         <button type="button" className="btn btn-info" onClick={editClick}>
-          {editMode ? 'save' : 'edit'}
+          {editMode ? 'Save' : 'Edit'}
         </button>
 
         {editMode && (
@@ -49,32 +49,33 @@ const Task = ({ task, category }) => {
         )}
         {!editMode && (
         <>
-          <div>{task.title}</div>
-          <div>{task.status}</div>
+          <h5 className="mr-1 my-1">{task.title}</h5>
+          <p className="mb-0 fs-6">{task.status}</p>
         </>
         )}
-
-        <button
-          type="button"
-          className="btn btn-warning m-1"
-          onClick={() => dispatch(changeStatus(category, task.taskId, status))}
-        >
-          {status}
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning m-1"
-          onClick={() => dispatch(changeStatus(category, task.taskId, blocked))}
-        >
-          {blocked}
-        </button>
-        <button
-          type="button"
-          className="btn btn-warning m-1"
-          onClick={() => dispatch(deleteTask(category, task.taskId))}
-        >
-          Delete
-        </button>
+        <div className="btn-group mt-3" role="group">
+          <button
+            type="button"
+            className="btn btn-warning m-1"
+            onClick={() => dispatch(changeStatus(category, task.taskId, status))}
+          >
+            {status}
+          </button>
+          <button
+            type="button"
+            className="btn btn-warning m-1"
+            onClick={() => dispatch(changeStatus(category, task.taskId, blocked))}
+          >
+            {blocked}
+          </button>
+          <button
+            type="button"
+            className="btn btn-warning m-1"
+            onClick={() => dispatch(deleteTask(category, task.taskId))}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   )

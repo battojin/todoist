@@ -16,9 +16,11 @@ const Home = () => {
     <div className="home">
       {categories.map((category, index) => {
         return (
-          <div key={category}>
-            <Link style={{ textDecoration: 'none' }} to={`/${category}`} className="container">
-              {index + 1}. {category}
+          <div key={category} className="card text-dark bg-warning text-center" style={{ width: '18rem' }}>
+            <Link to={`/${category}`}>
+              <h4 className="card-title text-dark">
+                {index + 1}. {category}
+              </h4>
             </Link>
           </div>
         )
