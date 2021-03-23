@@ -30,7 +30,7 @@ const TaskModel = {
   _isDeleted: false,
   _createdAt: +new Date(),
   _deletedAt: null,
-  status: ''
+  status: 'new'
 }
 
 const toReadFile = (category) => {
@@ -86,7 +86,7 @@ server.patch('/api/v1/tasks/:category/:id', async (req, res) => {
 server.delete('/api/v1/tasks/:category/:id', async (req, res) => {
   const { category, id } = req.params
   const updatedList = await toReadFile(category).then((file) => {
-    file.map((task) => {
+    return file.map((task) => {
       return task.taskId === id ? { ...task, _isDeleted: true, _deletedAt: +new Date() } : task
     })
   })
