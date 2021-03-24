@@ -34,12 +34,8 @@ const Task = ({ task, category }) => {
   }
 
   return (
-    <div className="card">
+    <div className="card mb-1">
       <div className="card-body">
-        <button type="button" className="btn btn-info" onClick={editClick}>
-          {editMode ? 'Save' : 'Edit'}
-        </button>
-
         {editMode && (
         <input
           type="text"
@@ -56,24 +52,29 @@ const Task = ({ task, category }) => {
         <div className="btn-group mt-3" role="group">
           <button
             type="button"
-            className="btn btn-warning m-1"
+            className="btn btn-warning mx-1"
             onClick={() => dispatch(changeStatus(category, task.taskId, status))}
           >
             {status}
           </button>
           <button
             type="button"
-            className="btn btn-warning m-1"
+            className="btn btn-warning mx-1"
             onClick={() => dispatch(changeStatus(category, task.taskId, blocked))}
           >
             {blocked}
           </button>
           <button
             type="button"
-            className="btn btn-warning m-1"
+            className="btn btn-warning mx-1"
             onClick={() => dispatch(deleteTask(category, task.taskId))}
           >
             Delete
+          </button>
+        </div>
+        <div>
+          <button type="button" className="btn btn-info btn-block mt-2" onClick={editClick}>
+            {editMode ? 'Save' : 'Edit'}
           </button>
         </div>
       </div>

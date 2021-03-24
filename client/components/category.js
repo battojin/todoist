@@ -17,15 +17,14 @@ const Category = () => {
 
   return (
     <div>
-      <div>
-        <div className="container">
-          {tasks.map((item) => (
-            <Task key={item.taskId} task={item} category={category} />
-          ))}
-          <AddTask category={category} />
-          <div className="d-flex justify-content-center">
-            <Link className="btn btn-info mt-3" style={{ textDecoration: 'none' }} to="/">Go back</Link>
-          </div>
+      <div className="container">
+        <h1 className="text-center">{category.toUpperCase()}</h1>
+        {tasks.map((item) => (
+          <Task key={item.taskId} task={item} category={category} />
+        ))}
+        <AddTask category={category} />
+        <div className="d-flex justify-content-center">
+          <Link className="btn btn-info mt-3" style={{ textDecoration: 'none' }} to="/">Go back</Link>
         </div>
       </div>
     </div>

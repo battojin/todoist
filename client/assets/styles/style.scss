@@ -11,6 +11,11 @@ body {
     background: #ffffee;
 }
 
+input {
+    border-style: solid;
+    border-color: $info;
+}
+
 .home {
     display: flex;
     width: 50vh;
@@ -22,17 +27,6 @@ body {
     align-items: center;
     border-radius: 10px;
 }
-
-// .category {
-//     display: flex;
-//     width: 50vh;
-//     flex-direction: column;
-//     background: #FFE6A7;
-//     padding: 12px;
-//     justify-content: center;
-//     align-items: center;
-//     border-radius: 10px;
-// }
 
 .category-button {
     display: block;
