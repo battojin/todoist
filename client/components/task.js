@@ -44,10 +44,10 @@ const Task = ({ task, category }) => {
         />
         )}
         {!editMode && (
-        <>
-          <h5 className="mr-1 my-1">{task.title}</h5>
-          <p className="mb-0 fs-6">{task.status}</p>
-        </>
+        <div>
+          <h5 className="text-dark mr-1 mb-2">{task.title}</h5>
+          <p className="text-secondary mb-0 fs-6">{task.status}</p>
+        </div>
         )}
         <div className="btn-group mt-3" role="group">
           <button
