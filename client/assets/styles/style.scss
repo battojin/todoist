@@ -6,9 +6,8 @@ body {
     justify-content: center;
     font-family: 'Roboto';
     min-height: 100vh;
-    // margin: 25px 0px 25px 0px;
     color: #0f3057;
-    background: #ffffee;
+    background: #F5F5F5;
 }
 
 input {
@@ -18,46 +17,12 @@ input {
 
 .home {
     display: flex;
+    background-color: #DCDCDC;
     width: 50vh;
     height: 30vh;
     flex-direction: column;
-    background: #FFE6A7;
     padding: 12px;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-}
-
-.category-button {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    height: 25px;
-    width: 200px;
-    overflow: hidden;
-    background: #fad67d;
-    border-radius: 10px;
-    border: 1px solid;
-    cursor: pointer;
-    box-shadow: 1px 5px 15px rgba(black,.1);
-    padding: 15px;
-    margin: 6px;
-    text-align: center;
-}
-
-.category-button:visited { text-decoration: none; color: #0f3057 }
-
-.addtask {
-    margin: 5px;
-    margin-top: 10px;
-}
-
-.task {
-    margin: 7px;
-    background: #d9b868;
-    border-radius: 10px;
-    border: 1px solid;
-    width: 35vh;
 }

@@ -13,18 +13,21 @@ const Home = () => {
   const categories = useSelector((store) => store.taskReducer.list)
 
   return (
-    <div className="home">
-      {categories.map((category, index) => {
-        return (
-          <div key={category} className="card text-dark bg-warning text-center" style={{ width: '18rem' }}>
-            <Link to={`/${category}`}>
-              <h4 className="card-title text-dark">
-                {index + 1}. {category}
-              </h4>
-            </Link>
-          </div>
-        )
-      })}
+    <div>
+      <h1 className="text-center">TODOIST</h1>
+      <div className="home">
+        {categories.map((category, index) => {
+          return (
+            <div key={category} className="card text-dark text-center my-1" style={{ backgroundColor: '#A0A0A0', width: '18rem' }}>
+              <Link to={`/${category}`}>
+                <h4 className="card-title text-white">
+                  {index + 1}. {category}
+                </h4>
+              </Link>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -23,7 +23,7 @@ const Category = () => {
       ))}
       <AddTask category={category} />
       <div className="d-flex justify-content-center">
-        <Link className="btn btn-info mt-3" style={{ textDecoration: 'none' }} to="/">Go back</Link>
+        <Link className="btn mt-3" style={{ textDecoration: 'none' }} to="/">Go back</Link>
       </div>
     </div>
   )
