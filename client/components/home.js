@@ -18,9 +18,9 @@ const Home = () => {
       <div className="home">
         {categories.map((category, index) => {
           return (
-            <div key={category} className="card text-dark text-center my-1" style={{ backgroundColor: '#A0A0A0', width: '18rem' }}>
-              <Link to={`/${category}`}>
-                <h4 className="card-title text-white">
+            <div key={category} className="card text-dark text-center my-1" style={{ width: '18rem' }}>
+              <Link className="btn btn-secondary" to={`/${category}`}>
+                <h4 className="card-title">
                   {index + 1}. {category}
                 </h4>
               </Link>
